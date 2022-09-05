@@ -27,7 +27,7 @@ class CheckUserLogin
             }else{
                 return response("Token Unauthorized",401);
             }
-            return $next($request);
+ 
         }else{
             return response("Unauthorized",401);
         }

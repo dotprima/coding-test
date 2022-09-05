@@ -93,7 +93,7 @@ class AuthController extends Controller
             'Status' => "login Berhasil",
             'Token' => $token,
             'Data' => $status
-          ],201);
+          ], 201);
         } else {
           return response()->json([
             'Status' => "Wrong Password",
@@ -106,6 +106,23 @@ class AuthController extends Controller
           'Code' => 501
         ]);
       }
+    }
+  }
+
+  public function Logout(Request $request)
+  {
+    $token = $request->header('Token');
+    if (isset($token)) {
+      $login = Login::where('token', $token)->first();
+      if ($login) {
+        $login->token = Null;
+        $login->save();
+        return response("Logout Successful", 201);
+      } else {
+        return response("Token Unauthorized", 401);
+      }
+    } else {
+      return response("Unauthorized", 401);
     }
   }
 }
