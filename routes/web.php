@@ -15,7 +15,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::resource('admin', UserController::class)->only([
+Route::resource('profil', UserController::class)->only([
     'index','store'
 ]);
 

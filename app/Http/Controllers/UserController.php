@@ -51,6 +51,7 @@ class UserController extends Controller
       $user->password = $request->password;
 
       return response()->json([
+        'Status' => "Data Edit Successfull",
         'Token' => $request['token'],
         'Data' => $user
       ]);
